@@ -1,0 +1,15 @@
+# Gradle y compilación
+.gradle/
+build/
+bin/
+*.class
+
+# Entornos y configuración local
+.idea/
+*.iml
+local.properties
+.DS_Store
+
+# Sistema operativo
+desktop.ini
+Thumbs.db

@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Formulario_Registro_Interactivo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color principal para botones y la barra de la app -->
+        <item name="colorPrimary">@color/mi_primario</item>
+
+        <!-- Color secundario para detalles como checkboxes activos y switches -->
+        <item name="colorSecondary">@color/mi_secundario</item>
+    </style>
+    <!-- Tema principal que busca AndroidManifest.xml -->
+    <style name="Theme.Formulario_Registro_Interactivo" parent="Base.Theme.Formulario_Registro_Interactivo" />
+</resources>

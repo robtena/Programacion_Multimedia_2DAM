@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contenedor raíz principal que abarca toda la pantalla -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Contenedor secundario que organiza y apila sus elementos de forma vertical -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <!-- 1. Campo de entrada de texto para escribir el nombre -->
+        <EditText
+            android:id="@+id/editText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPersonName"
+            android:hint="@string/hint_name" />
+
+        <!-- 2. Grupo de botones de opción (asegura que solo se seleccione un género) -->
+        <RadioGroup
+            android:id="@+id/RadioGroup_Gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <!-- Opción: Hombre -->
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/gender_male" />
+
+            <!-- Opción: Mujer -->
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_female" />
+
+        </RadioGroup>
+
+        <!-- 3. Casilla de verificación de Términos y Condiciones -->
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/terms_and_conditions" />
+
+        <!-- 4. Botón conmutador (On / Off) para la suscripción al Newsletter -->
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textOn="@string/newsletter_on"
+            android:textOff="@string/newsletter_off" />
+
+        <!-- 5. Interruptor deslizable para Notificaciones -->
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/notifications_label"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <!-- 6. Menú desplegable para seleccionar País -->
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/paises_array" />
+
+        <!-- 7. Botón con imagen interactiva centrado -->
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/image_button_desc"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <!-- 8. Etiqueta de texto para mostrar el resultado/estado final del formulario -->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

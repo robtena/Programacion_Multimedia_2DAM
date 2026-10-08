@@ -1,0 +1,44 @@
+<resources>
+
+    <!-- Nombre de la aplicación (se muestra en la barra superior y en el icono del móvil) -->
+    <string name="app_name">Formulario Registro Interactivo</string>
+
+    <!-- Texto de pista (hint) que aparece en gris dentro del cuadro de texto del nombre -->
+    <string name="hint_name">Introduce tu nombre</string>
+
+    <!-- Etiquetas para los botones de opción (RadioButton) del género -->
+    <string name="gender_male">Hombre</string>
+    <string name="gender_female">Mujer</string>
+
+    <!-- Texto de la casilla de verificación (CheckBox) para los términos -->
+    <string name="terms_and_conditions">Acepto los términos y condiciones</string>
+
+    <!-- Textos para el estado encendido (textOn) y apagado (textOff) del ToggleButton -->
+    <string name="newsletter_on">CON NEWSLETTER</string>
+    <string name="newsletter_off">SIN NEWSLETTER</string>
+
+    <!-- Etiqueta informativa al lado del interruptor (Switch) de notificaciones -->
+    <string name="notifications_label">Notificaciones activadas</string>
+
+    <!-- Texto visible del botón de confirmación/envío -->
+    <string name="button_send">Enviar</string>
+
+    <!-- Cadena inicialmente vacía, reservada para mostrar el estado del formulario desde Java -->
+    <string name="status_info"></string>
+
+    <!-- Array de texto: Lista ordenada de opciones que cargará el menú desplegable (Spinner) -->
+    <string-array name="paises_array">
+        <item>Selecciona un país</item> <!-- Opción 0: Mensaje por defecto -->
+        <item>España</item>            <!-- Opción 1 -->
+        <item>México</item>            <!-- Opción 2 -->
+        <item>Argentina</item>         <!-- Opción 3 -->
+        <item>Colombia</item>          <!-- Opción 4 -->
+    </string-array>
+
+    <!-- Descripción invisible para accesibilidad/lectores de pantalla (contentDescription del ImageButton) -->
+    <string name="image_button_desc">Imagen interactiva</string>
+
+    <!-- Mensaje emergente (Toast) que se mostrará en pantalla al hacer clic en el ImageButton -->
+    <string name="msg_image_clicked">¡Has pulsado la imagen!</string>
+
+</resources>

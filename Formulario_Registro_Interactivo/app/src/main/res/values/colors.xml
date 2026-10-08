@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="mi_primario">#D433CE14</color>      <!-- Color verde oscuro (o el hexadecimal que prefieras) -->
+    <color name="mi_secundario">#37803A</color>    <!-- Color verde flúor (o el hexadecimal que prefieras) -->
+</resources>
