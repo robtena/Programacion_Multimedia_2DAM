@@ -35,10 +35,15 @@
         <item>Colombia</item>          <!-- Opción 4 -->
     </string-array>
 
-    <!-- Descripción invisible para accesibilidad/lectores de pantalla (contentDescription del ImageButton) -->
+    <!-- Descripción invisible para accesibilidad/lectores de pantalla (contentDescription del ImageButton),
+    de no ponerlo te sugiere el IDE incluirlo -->
     <string name="image_button_desc">Imagen interactiva</string>
 
     <!-- Mensaje emergente (Toast) que se mostrará en pantalla al hacer clic en el ImageButton -->
     <string name="msg_image_clicked">¡Has pulsado la imagen!</string>
 
+    <!--  Literales para validaciones y envío -->
+    <string name="error_name_empty">El campo nombre es obligatorio</string>
+    <string name="error_name_short">El nombre debe tener al menos 3 caracteres</string>
+    <string name="toast_form_sent">¡Formulario enviado correctamente!</string>
 </resources>

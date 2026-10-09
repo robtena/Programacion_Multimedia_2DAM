@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         txtVisor = findViewById(R.id.txtVisor); /* meto en la variable "txtLabel" el metodo findView... y le indico
         R.(carpeta resource -res), después .id (para que encuentre la id que le pase a continuación del archivo
-        res-layout-activity_main.xml) y por ultimo .txtTexto
+        res-layout-activity_main.xml) y por ultimo .txtVisor
         (Nombre del id que pretendo asociar a la variable)
         */
         /*btnButton = findViewById(R.id.btnChange);/* meto en la variable "txtButton" el metodo findView... y le indico

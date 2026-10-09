@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Contenedor secundario que organiza y apila sus elementos de forma vertical -->
+    <!-- Contenedor secundario vque organiza y apila sus elementos de forma ertical -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -96,9 +96,18 @@
             android:contentDescription="@string/image_button_desc"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
-        <!-- 8. Etiqueta de texto para mostrar el resultado/estado final del formulario -->
+        <!-- 8. Botón Enviar (Inicia deshabilitado hasta cumplir las validaciones) -->
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:text="@string/button_send" />
+
+        <!-- 9. Etiqueta de texto para mostrar el resultado/estado final del formulario -->
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp" />
