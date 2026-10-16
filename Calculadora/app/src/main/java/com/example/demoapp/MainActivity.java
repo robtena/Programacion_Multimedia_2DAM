@@ -13,6 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * ARCHIVO DE LÓGICA Y CONTROLADOR - MainActivity.java
+ * Esta clase representa la Actividad Principal de la aplicación (la pantalla).
+ * Su función principal es:
+ * 1. Cargar el diseño visual definido en activity_main.xml.
+ * 2. Enlazar los componentes visuales (Botones y TextView) con las variables en Java usando findViewById().
+ * 3. Escuchar las acciones del usuario mediante el evento OnClickListener.
+ * 4. Gestionar la lógica de la calculadora (variables de estado, operaciones matemáticas y actualización del visor).
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Declaracion de variables
@@ -40,6 +49,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnComa;
     Button btnReiniciar;
 
+    /**
+     * METODO DEL CICLO DE VIDA - onCreate
+     * Se ejecuta una sola vez cuando la pantalla/actividad se crea por primera vez.
+     * Es el lugar ideal para:
+     * 1. Cargar el diseño visual desde XML (setContentView).
+     * 2. Enlazar componentes de la vista con las variables Java (findViewById).
+     * 3. Registrar los eventos de clic para responder a las pulsaciones de los botones (setOnClickListener).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,15 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        txtVisor = findViewById(R.id.txtVisor); /* meto en la variable "txtLabel" el metodo findView... y le indico
-        R.(carpeta resource -res), después .id (para que encuentre la id que le pase a continuación del archivo
-        res-layout-activity_main.xml) y por ultimo .txtVisor
-        (Nombre del id que pretendo asociar a la variable)
-        */
-        /*btnButton = findViewById(R.id.btnChange);/* meto en la variable "txtButton" el metodo findView... y le indico
-        R.(carpeta -res), después .id (para que encuentre la id que le pase a continuación) y por ultimo .btnChange
-        (Nombre del id que pretendo asociar a la variable)
-        */
+        txtVisor = findViewById(R.id.txtVisor);
 
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
@@ -79,8 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnComa = findViewById(R.id.btnComa);
         btnReiniciar = findViewById(R.id.btnReiniciar);
 
-        // Modo escucha ON de los componentes de la CALCULADORA
-
+        // Registro del evento de escucha (OnClickListener) en cada botón de la calculadora
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -95,50 +103,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDividir.setOnClickListener(this);
         btnMultiplicar.setOnClickListener(this);
         btnRestar.setOnClickListener(this);
-        btnSumar.setOnClickListener(this); /*Aquí estás registrando la escucha. Le estás diciendo al
-        botón: "Cuando te hagan clic, avísale a esta clase (this)". El metodo onCreate solo se ejecuta
-        una vez al crear la pantalla, por lo que es el lugar ideal para preparar y vincular los elementos visuales con sus controladores.*/
-
+        btnSumar.setOnClickListener(this);
         btnComa.setOnClickListener(this);
         btnReiniciar.setOnClickListener(this);
         btnIgual.setOnClickListener(this);
     }
 
+    /**
+     * METODOS DE CONTROLADOR DE EVENTOS - onClick
+     * Se ejecuta automáticamente cada vez que el usuario pulsa un botón que esté escuchando (setOnClickListener).
+     * 
+     * @param view La vista/componente visual (en este caso el Botón) que ha recibido el clic del usuario.
+     */
     @Override
-    // 1. Indica a Java que estamos implementando el metodo de la interfaz View.OnClickListener
-    public void onClick(View view) { // 2. Este metodo se ejecuta automáticamente al pulsar un botón. 'view' es el botón pulsado.
+    public void onClick(View view) {
+        // Obtenemos el identificador único (ID) del botón específico pulsado por el usuario
+        int id = view.getId();
 
-        int id = view.getId(); // 3. Obtenemos el identificador único (ID) del botón específico que el usuario ha tocado.
-
-        // 4. Comprobamos si el ID extraído coincide con el ID de nuestro botón 'btn1'
+        // Evaluamos el ID pulsado y llamamos a la función correspondiente
         if (id == R.id.btn1) {
-            agregarNumero("1"); // Aquí le pasamos nosotros el texto "1" al metodo
+            agregarNumero("1");
         } else if (id == R.id.btn2) {
-            agregarNumero("2"); // Aquí le pasamos el "2"
+            agregarNumero("2");
         } else if (id == R.id.btn3) {
-            agregarNumero("3"); // Aquí le pasamos el "3"
+            agregarNumero("3");
         } else if (id == R.id.btn4) {
-            agregarNumero("4"); // Aquí le pasamos el "4"
+            agregarNumero("4");
         } else if (id == R.id.btn5) {
-            agregarNumero("5"); // Aquí le pasamos el "5"
+            agregarNumero("5");
         } else if (id == R.id.btn6) {
-            agregarNumero("6"); // Aquí le pasamos el "6"
+            agregarNumero("6");
         } else if (id == R.id.btn7) {
-            agregarNumero("7"); // Aquí le pasamos el "7"
+            agregarNumero("7");
         } else if (id == R.id.btn8) {
-            agregarNumero("8"); // Aquí le pasamos el "8"
+            agregarNumero("8");
         } else if (id == R.id.btn9) {
-            agregarNumero("9"); // Aquí le pasamos el "9"
+            agregarNumero("9");
         } else if (id == R.id.btn0) {
-            agregarNumero("0"); // Aquí le pasamos el ""
-        } else if (id == R.id.btnReiniciar) { /* Aquí le pasamos el "CE" le indicamos que debe poner a 0 la calculadora,
-        reiniciar la variable primerNumero a 0 y operacion tb "". */
+            agregarNumero("0");
+        } else if (id == R.id.btnReiniciar) {
+            // Reiniciamos el visor a 0 y limpiamos las variables de estado
             txtVisor.setText("0");
             primerNumero = 0;
             operacion = "";
-        } else if (id == R.id.btnSumar) { //
+        } else if (id == R.id.btnSumar) {
             seleccionarOperacion("+");
-        } else if (id == R.id.btnRestar) { //
+        } else if (id == R.id.btnRestar) {
             seleccionarOperacion("-");
         } else if (id == R.id.btnDividir) { //
             seleccionarOperacion("/");
@@ -149,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.btnComa) {
             agregarComa();
         }
-
     }
 
     // --- MÉTODOS DE CLASE ---
