@@ -46,4 +46,5 @@
     <string name="error_name_empty">El campo nombre es obligatorio</string>
     <string name="error_name_short">El nombre debe tener al menos 3 caracteres</string>
     <string name="toast_form_sent">¡Formulario enviado correctamente!</string>
+
 </resources>
