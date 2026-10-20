@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ARCHIVO DE DISEÑO VISUAL (LAYOUT) - activity_main.xml
+    Aquí se define la interfaz gráfica de usuario (UI) de la pantalla principal.
+    En este archivo se colocan los componentes visuales (TextView, Button, LinearLayout, TableLayout, etc.),
+    sus posiciones, estilos, tamaños y sus IDs para luego poder vincularlos desde la clase Java (MainActivity.java).
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
