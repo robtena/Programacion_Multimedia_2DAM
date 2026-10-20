@@ -20,7 +20,7 @@
 
         <!-- 1. Campo de entrada de texto para escribir el nombre -->
         <EditText
-            android:id="@+id/editText_Name"
+            android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -29,7 +29,7 @@
 
         <!-- 2. Grupo de botones de opción (asegura que solo se seleccione un género) -->
         <RadioGroup
-            android:id="@+id/RadioGroup_Gender"
+            android:id="@+id/rgGenero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -37,7 +37,7 @@
 
             <!-- Opción: Hombre -->
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/rbHombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -45,7 +45,7 @@
 
             <!-- Opción: Mujer -->
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rbMujer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gender_female" />
@@ -54,7 +54,7 @@
 
         <!-- 3. Casilla de verificación de Términos y Condiciones -->
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/cbTerminos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -62,16 +62,16 @@
 
         <!-- 4. Botón conmutador (On / Off) para la suscripción al Newsletter -->
         <ToggleButton
-            android:id="@+id/toggleButton"
+            android:id="@+id/toggleBoletin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textOn="@string/newsletter_on"
-            android:textOff="@string/newsletter_off" />
+            android:textOff="@string/newsletter_off"
+            android:textOn="@string/newsletter_on" />
 
         <!-- 5. Interruptor deslizable para Notificaciones -->
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/switchNotificaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -80,17 +80,17 @@
 
         <!-- 6. Menú desplegable para seleccionar País -->
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerPais"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginBottom="16dp"
             android:entries="@array/paises_array" />
 
         <!-- 7. Botón con imagen interactiva centrado -->
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="117dp"
+            android:layout_height="85dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:contentDescription="@string/image_button_desc"
@@ -98,10 +98,19 @@
 
         <!-- 8. Etiqueta de texto para mostrar el resultado/estado final del formulario -->
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:gravity="start"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <!-- 9. Botón para procesar y enviar el formulario -->
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:text="@string/button_send" />
 
     </LinearLayout>
 

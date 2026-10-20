@@ -35,6 +35,17 @@
         <item>Colombia</item>          <!-- Opción 4 -->
     </string-array>
 
+    <!-- Mensajes de error para validaciones -->
+    <string name="error_name_empty">El nombre no puede estar vacío</string>
+    <string name="error_name_short">El nombre debe tener al menos 3 caracteres</string>
+
+    <!-- Mensajes de confirmación Toast y etiquetas de resumen -->
+    <string name="msg_form_sent">Formulario enviado correctamente</string>
+    <string name="status_active">Activado</string>
+    <string name="status_inactive">Desactivado</string>
+    <string name="status_notifications_on">Activas</string>
+    <string name="status_notifications_off">Inactivas</string>
+
     <!-- Descripción invisible para accesibilidad/lectores de pantalla (contentDescription del ImageButton) -->
     <string name="image_button_desc">Imagen interactiva</string>
 
