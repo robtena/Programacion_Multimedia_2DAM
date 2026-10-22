@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ListaBundle</string>
+    <string name="choose">Elige una provincia de Andalucía</string>
+    <string name="result">Has elegido la provincia: </string>
+</resources>
