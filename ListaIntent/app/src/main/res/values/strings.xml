@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lista</string>
+    <string name="app_name">ListaIntent</string>
     <string name="choose">Elige una provincia de Andalucía</string>
     <string name="result">Has elegido al provincia</string>
 

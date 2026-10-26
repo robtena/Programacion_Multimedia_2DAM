@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ListaIntent"
+rootProject.name = "ListaBundle"
 include(":app")

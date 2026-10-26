@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SaludoActividades</string>
+
+    <!-- MainActivity -->
+    <string name="titulo_main">SaludoActividades</string>
+    <string name="subtitulo_envia">Envía un saludo</string>
+    <string name="descripcion_ingresa_nombre">Escribe tu nombre para continuar.</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
+
+    <!-- SaludoActivity -->
+    <string name="titulo_saludo_header">Saludo</string>
+    <string name="subtitulo_recibido">Nombre recibido correctamente.</string>
+    <string name="btn_volver">Volver</string>
+</resources>
