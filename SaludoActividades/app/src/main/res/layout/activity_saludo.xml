@@ -57,7 +57,7 @@
                     android:textColor="#49454F"
                     android:textSize="16sp" />
 
-                <!-- Botón a todo el ancho con ID: btnVolver -->
+                <!-- Botón btnVolver -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnVolver"
                     android:layout_width="match_parent"
