@@ -35,9 +35,15 @@ public class SaludoActivity extends AppCompatActivity {
         String nombre = getIntent().getStringExtra("EXTRA_NOMBRE");// Lo encontramos por su clave, la que le dimos en el MainActivity
 
         if (nombre != null) {
-            txtSaludo.setText("Hola " + nombre);
+            /* (getString...Convierte la constante de recurso R.string.nombre_variable (que es solo un int identificador) en el texto real (String)
+            definido en tu archivo </>strings.xml, de esta forma si cambiamos la app de idioma se actualizará automáticamente sin problemas.
+            - Evitamos texto hardcodeado
+            - Traducción automática de la app
+            - Si cambiamos el texto en strings.xml se actualizará automáticamente en todas las Activities que usen getString().
+             */
+            txtSaludo.setText(getString(R.string.mensaje_hola, nombre));
         }else{
-            txtSaludo.setText("Se ha producido un ERROR (reinténtalo de nuevo");
+            txtSaludo.setText(getString(R.string.error_generico));
         }
 
         // Asigna un "escuchador" (listener) al botón btnVolver que se queda atento a cuando el usuario lo presione.

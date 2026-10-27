@@ -19,16 +19,10 @@
             android:layout_height="wrap_content"
             android:background="#E0F2F1"
             android:padding="16dp"
-            android:text="Saludo"
+            android:text="@string/titulo_saludo_header"
             android:textColor="#004D40"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <!-- ScrollView para desplazamiento -->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
 
             <!-- Contenedor vertical con margen interno de 24dp -->
             <LinearLayout
@@ -53,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Nombre recibido correctamente."
+                    android:text="@string/subtitulo_recibido"
                     android:textColor="#49454F"
                     android:textSize="16sp" />
 
@@ -64,14 +58,11 @@
                     android:layout_height="56dp"
                     android:layout_marginTop="24dp"
                     android:backgroundTint="#009688"
-                    android:text="Volver"
+                    android:text="@string/btn_volver"
                     android:textSize="16sp"
                     app:cornerRadius="16dp" />
 
             </LinearLayout>
-
-        </ScrollView>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

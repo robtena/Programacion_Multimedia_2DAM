@@ -13,4 +13,6 @@
     <string name="titulo_saludo_header">Saludo</string>
     <string name="subtitulo_recibido">Nombre recibido correctamente.</string>
     <string name="btn_volver">Volver</string>
+    <string name="mensaje_hola">Hola %1$s</string>
+    <string name="error_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
 </resources>
