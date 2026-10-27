@@ -25,76 +25,68 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- ScrollView para desplazamiento al desplegar el teclado -->
-        <ScrollView
+        <!-- Contenedor vertical con margen interno de 24dp -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:orientation="vertical"
+            android:padding="24dp">
 
-            <!-- Contenedor vertical con margen interno de 24dp -->
-            <LinearLayout
+            <!-- Título principal -->
+            <TextView
+                android:id="@+id/tvTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_marginTop="16dp"
+                android:text="Envía un saludo"
+                android:textColor="#1D1B20"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-                <!-- Título principal -->
-                <TextView
-                    android:id="@+id/tvTitulo"
+            <!-- Subtítulo -->
+            <TextView
+                android:id="@+id/tvSubtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Escribe tu nombre para continuar."
+                android:textColor="#49454F"
+                android:textSize="16sp" />
+
+            <!-- Campo de texto a todo el ancho con ID: edtNombre -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="Nombre"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#009688"
+                app:hintTextColor="#009688">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Envía un saludo"
-                    android:textColor="#1D1B20"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:inputType="textPersonName" />
 
-                <!-- Subtítulo -->
-                <TextView
-                    android:id="@+id/tvSubtitulo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Escribe tu nombre para continuar."
-                    android:textColor="#49454F"
-                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Campo de texto a todo el ancho con ID: edtNombre -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:hint="Nombre"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="#009688"
-                    app:hintTextColor="#009688">
+            <!-- Botón a todo el ancho con ID: btnEnviar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#009688"
+                android:text="Enviar"
+                android:textSize="16sp"
+                app:cornerRadius="16dp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtNombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Botón a todo el ancho con ID: btnEnviar -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnEnviar"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="24dp"
-                    android:backgroundTint="#009688"
-                    android:text="Enviar"
-                    android:textSize="16sp"
-                    app:cornerRadius="16dp" />
-
-            </LinearLayout>
-
-        </ScrollView>
+        </LinearLayout>
 
     </LinearLayout>
 
