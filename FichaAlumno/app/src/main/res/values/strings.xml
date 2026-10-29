@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SaludoActividades</string>
+
+    <!-- MainActivity -->
+    <string name="titulo_main">FichaAlumno</string>
+    <string name="subtitulo_envia">Datos del alumno</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_edad">Edad</string>
+    <string name="hint_curso">Curso</string>
+    <string name="boolean_repetidor">Repetidor</string>
+    <string name="btn_enviar">Ver ficha</string>
+    <string name="error_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="error_edad_vacio">La edad no puede estar vacía</string>
+    <string name="error_curso_vacio">El curso no puede estar vacío</string>
+
+    <!-- SaludoActivity -->
+    <string name="titulo_saludo_header">Saludo</string>
+    <string name="subtitulo_recibido">Nombre recibido correctamente.</string>
+    <string name="btn_volver">Volver</string>
+    <string name="mensaje_hola">Hola %1$s</string>
+    <string name="error_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
+</resources>
