@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lista</string>
+    <string name="choose">Elige</string>
+    <string name="result">Aquí saldrá tu selección</string>
+    <string name="provincia">Provincia</string>
+    <string name="indice">Índice</string>
+</resources>
