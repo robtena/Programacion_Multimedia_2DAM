@@ -64,11 +64,11 @@ public class FichaActivity extends AppCompatActivity {
             txtRepetidor.setText(getString(R.string.label_repetidor, textoRepetidor));
 
         } else {
-            // 5. Si faltan datos o el Bundle es null, mostramos un aviso comprensible para el usuario
+            // Si faltan datos o el Bundle es null, mostramos un aviso comprensible para el usuario
             txtNombre.setText(getString(R.string.error_generico));
         }
 
-        // 6. Asignamos el escuchador de clic al botón btnVolver para cerrar la ficha mediante finish()
+        // Asignamos el escuchador de clic al botón btnVolver para cerrar la ficha mediante finish()
         btnVolver.setOnClickListener(v -> finish());
     }
 }
