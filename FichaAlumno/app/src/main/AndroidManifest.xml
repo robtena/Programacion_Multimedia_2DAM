@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SaludoActividades">
+        android:theme="@style/Theme.FichaAlumno">
 
         <!-- Cada pantalla en Android debe tener su propia etiqueta <activity> dentro de <application> para que
         el sistema operativo sepa que existe y la pueda abrir. MainActivity tiene además el <intent-filter> porque

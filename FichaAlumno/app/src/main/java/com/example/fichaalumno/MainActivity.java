@@ -1,4 +1,4 @@
-package com.example.saludoactividades;
+package com.example.fichaalumno;
 
 import android.content.Intent;
 import android.os.Bundle;

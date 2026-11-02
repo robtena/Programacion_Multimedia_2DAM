@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.saludoactividades"
+    namespace = "com.example.fichaalumno"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.example.saludoactividades"
+        applicationId = "com.example.fichaalumno"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
