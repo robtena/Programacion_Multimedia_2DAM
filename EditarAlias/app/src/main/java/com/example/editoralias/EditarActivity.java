@@ -40,7 +40,7 @@ public class EditarActivity extends AppCompatActivity {
             edtAlias.setSelection(aliasActual.length());
         }
 
-        // Al guardar, valida que el nuevo alias no esté vacío.
+        // Al guardar, valida que el nuevo alias no esté vacío y lo devuelve a MainActivity
         btnGuardar.setOnClickListener(v -> {
             String nuevoAlias = edtAlias.getText() != null ? edtAlias.getText().toString().trim() : "";
             if (nuevoAlias.isEmpty()) {
@@ -49,10 +49,14 @@ public class EditarActivity extends AppCompatActivity {
                 return;
             }
 
+            // Creamos un Intent vacío para empaquetar el resultado (no para abrir otra actividad)
             Intent respuesta = new Intent();
             respuesta.putExtra("alias_editado", nuevoAlias);
-            // setResult establece el código de resultado (RESULT_OK = éxito/-1) y el Intent con los datos de respuesta
+            
+            // setResult entrega el código RESULT_OK (-1) y el Intent de respuesta a la actividad que está esperando
             setResult(RESULT_OK, respuesta);
+            
+            // finish() cierra esta actividad (EditarActivity) y regresa automáticamente a MainActivity
             finish();
         });
 
