@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">EditarAlias</string>
+
+    <!-- MainActivity -->
+    <string name="titulo_main">EditarAlias</string>
+    <string name="subtitulo_tu_alias">Tu alias</string>
+    <string name="label_alias_actual">Alias actual</string>
+    <string name="btn_editar">Editar</string>
+    <string name="alias_inicial">Alumno DAM</string>
+
+    <!-- EditarActivity -->
+    <string name="titulo_editar_activity">Editar alias</string>
+    <string name="subtitulo_cambia_alias">Cambia tu alias</string>
+    <string name="descripcion_no_vacio">El alias no puede quedar vacío.</string>
+    <string name="hint_alias">Alias</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="error_alias_vacio">El alias no puede estar vacío</string>
+</resources>
