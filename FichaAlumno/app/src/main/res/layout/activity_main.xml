@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Barra superior / encabezado -->
+        <!-- Barra superior del sistema / encabezado -->
         <TextView
             android:id="@+id/tvHeader"
             android:layout_width="match_parent"
@@ -25,115 +25,122 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Contenedor del formulario -->
-        <LinearLayout
+        <!-- ScrollView que permite el desplazamiento si el teclado oculta los campos -->
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:fillViewport="true">
 
-            <!-- Título principal -->
-            <TextView
-                android:id="@+id/tvTitulo"
+            <!-- Contenedor vertical con margen interno de 24dp -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/subtitulo_envia"
-                android:textColor="#1D1B20"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="24dp">
 
-            <!-- Campo Nombre -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:hint="@string/hint_nombre"
-                app:boxBackgroundMode="outline"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#009688"
-                app:hintTextColor="#009688">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtNombre"
+                <!-- Título principal -->
+                <TextView
+                    android:id="@+id/tvTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:textColor="#000000" />
+                    android:layout_marginTop="16dp"
+                    android:text="@string/subtitulo_envia"
+                    android:textColor="#1D1B20"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Campo Edad -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/hint_edad"
-                app:boxBackgroundMode="outline"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#009688"
-                app:hintTextColor="#009688">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEdad"
+                <!-- Campo Nombre (ID: edtNombre) -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textColor="#000000" />
+                    android:layout_marginTop="24dp"
+                    android:hint="@string/hint_nombre"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxStrokeColor="#009688"
+                    app:hintTextColor="#009688">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000" />
 
-            <!-- Campo Curso -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/hint_curso"
-                app:boxBackgroundMode="outline"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#009688"
-                app:hintTextColor="#009688">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtCurso"
+                <!-- Campo Edad (ID: edtEdad) -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_edad"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxStrokeColor="#009688"
+                    app:hintTextColor="#009688">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtEdad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Campo Curso (ID: edtCurso) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_curso"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxStrokeColor="#009688"
+                    app:hintTextColor="#009688">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCurso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapCharacters"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CheckBox Repetidor (ID: chkRepetidor) -->
+                <CheckBox
+                    android:id="@+id/chkRepetidor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/boolean_repetidor"
                     android:textColor="#000000" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <!-- Botón Ver Ficha (ID: btnVerFicha) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerFicha"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#009688"
+                    android:text="@string/btnVerFicha"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:cornerRadius="16dp" />
 
-            <!-- CheckBox Repetidor -->
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/boolean_repetidor"
-                android:textColor="#000000" />
-
-            <!-- Botón Ver Ficha -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEnviar"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="#009688"
-                android:text="@string/btn_enviar"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:cornerRadius="16dp" />
-
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

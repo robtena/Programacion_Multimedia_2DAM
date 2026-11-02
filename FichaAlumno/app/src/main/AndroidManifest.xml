@@ -16,20 +16,21 @@
         el sistema operativo sepa que existe y la pueda abrir. MainActivity tiene además el <intent-filter> porque
         es la pantalla inicial con la que arranca la app. -->
 
-            <activity
-                android:name=".MainActivity"
-                android:exported="true"
-                android:windowSoftInputMode="adjustResize">
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
-            </activity>
-            <activity
-                android:name=".SaludoActivity"
-                android:exported="false"
-                android:windowSoftInputMode="adjustResize" />
-        </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-    </manifest>
+        <activity
+            android:name=".FichaActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

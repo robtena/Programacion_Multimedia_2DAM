@@ -3,6 +3,7 @@ package com.example.saludoactividades;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -13,10 +14,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declaración de las referencias a los componentes visuales del layout XML
+    // Declaración de las referencias a las variables Java para los componentes del layout XML
     EditText edtNombre;
     EditText edtEdad;
-    Button btnEnviar;
+    EditText edtCurso;
+    CheckBox chkRepetidor;
+    Button btnVerFicha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,38 +32,69 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Enlaza la variable Java 'edtNombre' con el elemento gráfico <TextInputEditText android:id="@+id/edtNombre"> del XML
+        // Enlazamos cada variable Java con su elemento gráfico correspondiente en el layout usando su ID
         edtNombre = findViewById(R.id.edtNombre);
-
-        // Enlaza la variable Java 'edtNombre' con el elemento gráfico <TextInputEditText android:id="@+id/edtNombre"> del XML
         edtEdad = findViewById(R.id.edtEdad);
-        
-        // Enlaza la variable Java 'btnEnviar' con el elemento gráfico <Button android:id="@+id/btnEnviar"> del XML
-        btnEnviar = findViewById(R.id.btnEnviar);
+        edtCurso = findViewById(R.id.edtCurso);
+        chkRepetidor = findViewById(R.id.chkRepetidor);
+        btnVerFicha = findViewById(R.id.btnVerFicha);
 
-        // Asigna el evento de clic al botón 'btnEnviar'
-        btnEnviar.setOnClickListener(v -> {
-            // Lee el texto ingresado en 'edtNombre', lo convierte a String y elimina los espacios en blanco al inicio y final
+        // Asignamos el escuchador de eventos (listener) al botón btnVerFicha
+        btnVerFicha.setOnClickListener(v -> {
+
+            // 1. Validamos el campo nombre: leemos el texto, quitamos espacios con trim() y comprobamos que no esté vacío
             String nombre = edtNombre.getText().toString().trim();
-
-            // Comprueba si la cadena de texto está vacía
             if (nombre.isEmpty()) {
-                // Muestra un mensaje flotante de error sobre la caja de texto cargando la cadena desde strings.xml
                 edtNombre.setError(getString(R.string.error_nombre_vacio));
-            } else {
-                // Crea un Intent explícito para navegar desde MainActivity hacia SaludoActivity
-                Intent intent = new Intent(MainActivity.this, SaludoActivity.class);
-
-                // Adjunta el valor del nombre al Intent usando la etiqueta clave "EXTRA_NOMBRE"
-                intent.putExtra("EXTRA_NOMBRE", nombre);
-
-                // Solicita al sistema operativo iniciar la pantalla SaludoActivity
-                startActivity(intent);
+                edtNombre.requestFocus();
+                return; // Si está vacío, mostramos error y no continuamos
             }
+
+            // 2. Validamos la edad utilizando el bloque de la ayuda (conversión a entero y rango entre 16 y 100)
+            int edad;
+            try {
+                // Intentamos convertir la cadena de texto ingresada en un número entero
+                edad = Integer.parseInt(edtEdad.getText().toString().trim());
+            } catch (NumberFormatException e) {
+                // Si el formato no es numérico entero válido, mostramos mensaje de error y no continuamos
+                edtEdad.setError("Introduce una edad entera válida");
+                edtEdad.requestFocus();
+                return;
+            }
+
+            // Comprobamos si la edad ingresada está fuera del rango permitido (entre 16 y 100 años)
+            if (edad < 16 || edad > 100) {
+                edtEdad.setError("La edad debe estar entre 16 y 100");
+                edtEdad.requestFocus();
+                return; // Si no cumple el rango, mostramos error y detenemos la ejecución
+            }
+
+            // Validamos el campo curso: leemos el texto, quitamos espacios con trim() y comprobamos que no esté vacío
+            String curso = edtCurso.getText().toString().trim();
+            if (curso.isEmpty()) {
+                edtCurso.setError(getString(R.string.error_curso_vacio));
+                edtCurso.requestFocus();
+                return; // Si está vacío, mostramos error y no continuamos
+            }
+
+            // Obtenemos el estado del CheckBox de repetidor (true si está marcado, false si no lo está)
+            boolean esRepetidor = chkRepetidor.isChecked();
+
+            // Creamos un objeto Bundle para guardar y empaquetar los cuatro datos solicitados (String, int, String, boolean)
+            Bundle bundle = new Bundle();
+            bundle.putString("EXTRA_NOMBRE", nombre);
+            bundle.putInt("EXTRA_EDAD", edad);
+            bundle.putString("EXTRA_CURSO", curso);
+            bundle.putBoolean("EXTRA_REPETIDOR", esRepetidor);
+
+            // Creamos un Intent explícito para navegar desde MainActivity hacia FichaActivity
+            Intent intent = new Intent(MainActivity.this, FichaActivity.class);
+
+            // Añadimos el Bundle agrupado al Intent mediante el metodo putExtras()
+            intent.putExtras(bundle);
+
+            // Solicitamos al sistema operativo iniciar la pantalla FichaActivity
+            startActivity(intent);
         });
-
     }
-
-
-
 }
