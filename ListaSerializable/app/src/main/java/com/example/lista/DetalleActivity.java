@@ -25,6 +25,7 @@ public class DetalleActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Vinculación de las vistas del layout XML con las variables Java
         txtProvincia = findViewById(R.id.txtProvincia);
         txtIndice = findViewById(R.id.txtIndice);
 
@@ -35,11 +36,15 @@ public class DetalleActivity extends AppCompatActivity {
                El resultado se guarda en la variable bundle.
                Aquí se recupera la “caja” con los datos enviados desde la Activity anterior.
          */
+
+        // Recuperamos el objeto 'Provincia' enviado a través del Intent.
+        // Se usa getSerializableExtra() y un cast explícito a (Provincia) para deserializarlo.
         Provincia provincia = (Provincia) getIntent().getSerializableExtra("provincia");
 
+        // Si el objeto se ha recibido correctamente, mostramos sus campos en las vistas
         if (provincia != null) {
             String provNombre = provincia.getNombre();
-            int provIndice = provincia.getIndice()+1;
+            int provIndice = provincia.getIndice() + 1; // +1 para mostrar un índice ordenado desde 1
 
             txtProvincia.setText("Provincia: " + provNombre);
             txtIndice.setText("Índice en la lista: " + provIndice);

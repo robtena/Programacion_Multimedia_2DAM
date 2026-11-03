@@ -2,6 +2,8 @@ package com.example.lista;
 
 import java.io.Serializable;
 
+// Al implementar 'Serializable', esta clase permite que sus objetos puedan ser
+// convertidos a una secuencia de bytes para transmitirse entre distintas Activitys mediante un Intent.
 public class Provincia implements Serializable {
     private String nombre;
     private int indice;

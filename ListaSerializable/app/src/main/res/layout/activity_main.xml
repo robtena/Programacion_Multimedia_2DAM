@@ -7,29 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        app:layout_constraintBottom_toTopOf="@+id/lstProvincias"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_top_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtElige"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/choose" />
+    <ListView
+        android:id="@+id/lstProvincias"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_top_toBottomOf="@+id/txtResultado" />
 
-        <ListView
-            android:id="@+id/lstProvincias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txtResultado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/result" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

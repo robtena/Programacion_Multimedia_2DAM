@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-
     TextView txtResultado;
 
     @Override
@@ -28,25 +27,29 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Referencia al ListView en el layout XML
         ListView listProvincias = findViewById(R.id.lstProvincias);
 
+        // Array con los datos de las provincias a mostrar
         String[] provincias = {
                 "Huelva", "Sevilla", "Cádiz", "Córdoba", "Jaén", "Granada",
                 "Málaga", "Almería"};
 
+        // El ArrayAdapter adapta el array de Strings al formato visual de cada elemento de la lista
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 provincias
         );
 
+        // Asignamos el adaptador al ListView
         listProvincias.setAdapter(adapter);
 
-
+        // Evento que se dispara al pulsar sobre un elemento de la lista
         listProvincias.setOnItemClickListener((parent, view, position, id) -> {
             String provinciaSeleccionada = provincias[position];
             txtResultado = findViewById(R.id.txtResultado);
-            txtResultado.setText("Se ha pulsado "+ provinciaSeleccionada);
+            txtResultado.setText("Se ha pulsado " + provinciaSeleccionada);
 
             /* APUNTES
             Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
@@ -55,16 +58,17 @@ public class MainActivity extends AppCompatActivity {
                     DetalleActivity.class → Activity destino.
                 Se prepara la navegación a DetalleActivity.
             */
+            // Instanciamos el objeto Provincia con el nombre e índice seleccionado
             Provincia provinciaObj = new Provincia(provinciaSeleccionada, position);
 
+            // Preparamos el Intent para navegar a DetalleActivity
             Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
-            intent.putExtra("provincia", provinciaObj); // <- objeto Serializable
 
+            // Adjuntamos el objeto Provincia al Intent (funciona porque Provincia implementa Serializable)
+            intent.putExtra("provincia", provinciaObj); // <-- Objeto seriezable
+
+            // Solicitamos al sistema operativo iniciar la nueva Activity
             startActivity(intent);
         });
     }
-
-
-
-
 }
