@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">BibliotecaLibroSerializable</string>
+    <string name="app_name">BibliotecaLibroParcelable</string>
 
     <!-- MainActivity -->
-    <string name="titulo_main">Biblioteca</string>
+    <string name="titulo_main">Biblioteca Parcelable</string>
     <string name="etiqueta_nombre">Título</string>
     <string name="etiqueta_autor">Autor</string>
     <string name="etiqueta_edad">Edad recomendada</string>

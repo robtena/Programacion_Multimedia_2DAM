@@ -45,8 +45,8 @@ public class InfantilActivity extends AppCompatActivity {
          */
 
         // Recibimos el objeto Libro que hemos enviado con el Intent
-        // Se usa getSerializableExtra() y un cast explícito a (Libro) para deserializarlo.
-        Libro miLibro = (Libro) getIntent().getSerializableExtra("libro");
+        // Se usa getParcelableExtra() para recuperarlo.
+        Libro miLibro = getIntent().getParcelableExtra("libro", Libro.class);
 
         // Si el objeto se ha recibido correctamente, mostramos sus campos en las vistas (en pantalla)
         if (miLibro != null) {

@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BibliotecaLibroSerializable"
+rootProject.name = "BibliotecaLibroParcelable"
 include(":app")

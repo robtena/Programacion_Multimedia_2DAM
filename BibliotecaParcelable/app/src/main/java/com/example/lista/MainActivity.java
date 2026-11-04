@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             ya que en Java no se puede hacer un casting directo de String a int. */
             int edad = Integer.parseInt(edadStr);
 
-            // Instanciamos el objeto Libro (que implementa Serializable) con los datos introducidos
+            // Instanciamos el objeto Libro (que implementa Parcelable) con los datos introducidos
             Libro miLibro = new Libro(titulo, autor, edad);
 
             // Decidimos qué Activity abrir según los datos introducidos.
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, GeneralActivity.class);
             }
 
-            // Enviamos el objeto serializable al Intent con su "clave" y su valor
+            // Enviamos el objeto parcelable al Intent con su "clave" y su valor
             intent.putExtra("libro", miLibro);
 
             // Lanzamos la nueva Activity
