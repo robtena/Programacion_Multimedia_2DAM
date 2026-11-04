@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!-- android:id="@+id/main": Identificador para asociar el ConstraintLayout con la lógica en Java -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -63,7 +64,7 @@
                     app:hintTextColor="#009688">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtNombre"
+                        android:id="@+id/edtTitulo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
@@ -99,7 +100,7 @@
                         android:id="@+id/edtAutor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="textPersonName"
                         android:textColor="#000000" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -132,14 +133,14 @@
                         android:id="@+id/edtEdad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textCapCharacters"
+                        android:inputType="number"
                         android:textColor="#000000" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Botón Ver Ficha (ID: btnVerFicha) -->
+                <!-- Botón Ver Ficha (ID: btnClasificar) -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/clas_libro"
+                    android:id="@+id/btnClasificar"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginTop="24dp"

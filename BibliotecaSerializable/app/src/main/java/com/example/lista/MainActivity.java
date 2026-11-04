@@ -15,13 +15,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends AppCompatActivity {
 
     // Declaración de las referencias a las variables Java para los componentes del layout XML
-    EditText edtTitulo;
-    EditText edtAutor;
-    EditText edtEdad;
-    Button btnVerFicha;
+    TextInputEditText edtTitulo;
+    TextInputEditText edtAutor;
+    TextInputEditText edtEdad;
+    MaterialButton btnClasificar;
 
 
     @Override
@@ -35,47 +38,41 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Referencia al ListView en el layout XML
-        ListView listProvincias = findViewById(R.id.lstProvincias);
+        // Referencias que recogemos del layout XML
+        TextInputEditText edtTitulo = findViewById(R.id.edtTitulo);
+        TextInputEditText edtAutor = findViewById(R.id.edtAutor);
+        TextInputEditText edtEdad = findViewById(R.id.edtEdad);
+        MaterialButton btnClasificar = findViewById(R.id.btnClasificar);
 
-        // Array con los datos de las provincias a mostrar
-        String[] provincias = {
-                "Huelva", "Sevilla", "Cádiz", "Córdoba", "Jaén", "Granada",
-                "Málaga", "Almería"};
+        // Evento que se dispara al pulsar sobre el boton "Clasificar libro"
+        btnClasificar.setOnClickListener(v -> {
+            // Recogemos el texto introducido por el usuario en cada campo
+            String titulo = edtTitulo.getText().toString().trim();
+            String autor = edtAutor.getText().toString().trim();
+            String edadStr = edtEdad.getText().toString().trim();
+            // Recogemos el texto introducido en el campo de edad y eliminamos espacios en blanco
 
-        // El ArrayAdapter adapta el array de Strings al formato visual de cada elemento de la lista
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                provincias
-        );
+            /* Convertimos (parseamos) el String a un número entero (int) utilizando Integer.parseInt(),
+            ya que en Java no se puede hacer un casting directo de String a int. */
+            int edad = Integer.parseInt(edadStr);
 
-        // Asignamos el adaptador al ListView
-        listProvincias.setAdapter(adapter);
+            // Instanciamos el objeto Libro (que implementa Serializable) con los datos introducidos
+            Libro miLibro = new Libro(titulo, autor, edad);
 
-        // Evento que se dispara al pulsar sobre un elemento de la lista
-        listProvincias.setOnItemClickListener((parent, view, position, id) -> {
-            String provinciaSeleccionada = provincias[position];
-            txtResultado = findViewById(R.id.txtResultado);
-            txtResultado.setText("Se ha pulsado " + provinciaSeleccionada);
+            // Decidimos qué Activity abrir según los datos introducidos.
+            Intent intent; // Declaramos una variable intent de tipo Intent para usarla en la validación...
+            if (edad < 12) {
+                // En este caso abrimos intanfilActivity xq edad < 12
+                intent = new Intent(MainActivity.this, InfantilActivity.class);
+            } else {
+                // En cualquier otro edad será > 12 así que abrimos generalActivity
+                intent = new Intent(MainActivity.this, GeneralActivity.class);
+            }
 
-            /* APUNTES
-            Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
-                Crea un Intent para cambiar de pantalla.
-                    MainActivity.this → Activity actual (origen).
-                    DetalleActivity.class → Activity destino.
-                Se prepara la navegación a DetalleActivity.
-            */
-            // Instanciamos el objeto Provincia con el nombre e índice seleccionado
-            Provincia provinciaObj = new Provincia(provinciaSeleccionada, position);
+            // Enviamos el objeto serializable al Intent con su "clave" y su valor
+            intent.putExtra("libro", miLibro);
 
-            // Preparamos el Intent para navegar a DetalleActivity
-            Intent intent = new Intent(MainActivity.this, InfantilActivity.class);
-
-            // Adjuntamos el objeto Provincia al Intent (funciona porque Provincia implementa Serializable)
-            intent.putExtra("provincia", provinciaObj); // <-- Objeto seriezable
-
-            // Solicitamos al sistema operativo iniciar la nueva Activity
+            // Lanzamos la nueva Activity
             startActivity(intent);
         });
     }

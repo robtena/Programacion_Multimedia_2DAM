@@ -13,12 +13,10 @@
 
     <!-- InfantilActivity -->
     <string name="titulo_infantil_header">Sección infantil</string>
-    <string name="btn_infantil_volver">Volver</string>
     <string name="error_intantil_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
 
     <!-- GeneralActivity -->
-    <string name="titulo_ficha_header">Sección infantil</string>
-    <string name="subtitulo_recibido">Ficha recibida correctamente.</string>
+    <string name="titulo_general_header">Sección general</string>
     <string name="error_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
 
     <!-- Ficha del Libro (Compartidos en Infantil y General) -->

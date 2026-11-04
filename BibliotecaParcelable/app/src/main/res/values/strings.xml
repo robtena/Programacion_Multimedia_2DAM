@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">BibliotecaLibroSerializable</string>
+
+    <!-- MainActivity -->
+    <string name="titulo_main">Biblioteca</string>
+    <string name="etiqueta_nombre">Título</string>
+    <string name="etiqueta_autor">Autor</string>
+    <string name="etiqueta_edad">Edad recomendada</string>
+    <string name="btn_clas_libro">Clasificar libro</string>
+    <string name="error_título_vacio">El título no puede estar vacío</string>
+    <string name="error_autor_vacio">El autor no puede estar vacío</string>
+    <string name="error_edad_vacia">La edad no puede estar vacía</string>
+
+    <!-- InfantilActivity -->
+    <string name="titulo_infantil_header">Sección infantil</string>
+    <string name="error_intantil_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
+
+    <!-- GeneralActivity -->
+    <string name="titulo_general_header">Sección general</string>
+    <string name="error_generico">Se ha producido un ERROR (reinténtalo de nuevo)</string>
+
+    <!-- Ficha del Libro (Compartidos en Infantil y General) -->
+    <string name="label_titulo">Título: %1$s</string>
+    <string name="label_autor">Autor: %1$s</string>
+    <string name="label_edad">Edad recomendada: %1$d</string>
+    <string name="btn_volver">Volver</string>
+    <!-- el btn_volver se puede reutilizar en generalActivity & InfantilAcvity
+     ya que hacen exactamente lo mismo (y así evitamos duplicados) -->
+
+</resources>

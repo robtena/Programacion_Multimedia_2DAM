@@ -9,10 +9,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.button.MaterialButton;
+
 public class InfantilActivity extends AppCompatActivity {
 
-    TextView txtProvincia;
-    TextView txtIndice;
+    // Declaramos los TextView de activity_infantil.xml
+    TextView txtTitulo;
+    TextView txtAutor;
+    TextView txtEdad;
+    MaterialButton btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,11 @@ public class InfantilActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Vinculación de las vistas del layout XML con las variables Java
-        txtProvincia = findViewById(R.id.txtProvincia);
-        txtIndice = findViewById(R.id.txtIndice);
+        // Vinculamos con los IDs del XML de infantil
+        txtTitulo = findViewById(R.id.txtTitulo);
+        txtAutor = findViewById(R.id.txtAutor);
+        txtEdad = findViewById(R.id.txtEdad);
+        btnVolver = findViewById(R.id.btnVolver);
 
         /* APUNTES
         Bundle bundle = getIntent().getExtras();
@@ -37,17 +44,18 @@ public class InfantilActivity extends AppCompatActivity {
                Aquí se recupera la “caja” con los datos enviados desde la Activity anterior.
          */
 
-        // Recuperamos el objeto 'Provincia' enviado a través del Intent.
-        // Se usa getSerializableExtra() y un cast explícito a (Provincia) para deserializarlo.
-        Provincia provincia = (Provincia) getIntent().getSerializableExtra("provincia");
+        // Recibimos el objeto Libro que hemos enviado con el Intent
+        // Se usa getSerializableExtra() y un cast explícito a (Libro) para deserializarlo.
+        Libro miLibro = (Libro) getIntent().getSerializableExtra("libro");
 
-        // Si el objeto se ha recibido correctamente, mostramos sus campos en las vistas
-        if (provincia != null) {
-            String provNombre = provincia.getNombre();
-            int provIndice = provincia.getIndice() + 1; // +1 para mostrar un índice ordenado desde 1
-
-            txtProvincia.setText("Provincia: " + provNombre);
-            txtIndice.setText("Índice en la lista: " + provIndice);
+        // Si el objeto se ha recibido correctamente, mostramos sus campos en las vistas (en pantalla)
+        if (miLibro != null) {
+            txtTitulo.setText("Título: " + miLibro.getTitulo());
+            txtAutor.setText("Autor: " + miLibro.getAutor());
+            txtEdad.setText("Edad recomendada: " + miLibro.getEdad());
         }
+
+        // Evento para el botón Volver (cierra esta Activity y vuelve a la anterior)
+        btnVolver.setOnClickListener(v -> finish());
     }
 }
