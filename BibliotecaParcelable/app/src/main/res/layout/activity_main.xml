@@ -43,7 +43,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/etiqueta_nombre"
+                    android:text="@string/etiqueta_titulo"
                     android:textColor="#666666"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -54,7 +54,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="6dp"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -80,14 +80,14 @@
                     android:textColor="#666666"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="36dp"
                     android:layout_marginBottom="4dp" />
 
                 <!-- Campo Autor (ID: edtAutor) -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="6dp"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -113,14 +113,14 @@
                     android:textColor="#666666"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="36dp"
                     android:layout_marginBottom="4dp" />
 
                 <!-- Campo Edad recomendada (ID: edtEdad) -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="6dp"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -138,12 +138,12 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Botón Ver Ficha (ID: btnClasificar) -->
+                <!-- Botón Clasificar libro (ID: btnClasificar) -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnClasificar"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="40dp"
                     android:backgroundTint="#009688"
                     android:text="@string/btn_clas_libro"
                     android:textColor="#FFFFFF"

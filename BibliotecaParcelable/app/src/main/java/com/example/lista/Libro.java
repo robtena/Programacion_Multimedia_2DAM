@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Libro implements Parcelable {
-    /* Parcelable: Indica que esta clase puede convertirse
-                   a un Parcel (una especie de contenedor rápido de datos).
+    /* Parcelable: Indica que esta clase puede convertirse  a un Parcel (una especie de contenedor
+    rápido de datos).
      Android usa Parcelable para pasar objetos entre Activities de forma eficiente.
     */
     /* Los atributos Son los datos que queremos transportar
