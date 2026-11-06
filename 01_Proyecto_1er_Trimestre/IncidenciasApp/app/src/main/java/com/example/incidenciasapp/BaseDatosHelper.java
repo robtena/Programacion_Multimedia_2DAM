@@ -8,11 +8,10 @@ import android.content.ContentValues;
 /*
  * CAPA DE BASE DE DATOS (SQLite)
  *
- * ¿Por qué esta clase?
- * En Android NO se utiliza JDBC. En su lugar, heredamos de 'SQLiteOpenHelper',
- * una clase nativa de Android diseñada para crear y gestionar la BD SQLite de forma eficiente.
+ * En Android se utiliza 'SQLiteOpenHelper' (la heredamos), que es una clase nativa de Android
+ * diseñada para crear y gestionar la BD SQLite de forma eficiente.
  *
- * Esta clase NO maneja diseño (XML) ni pantallas; su ÚNICA función es hablar con la BD.
+ * En esta clase NO manejaremos diseño (XML) ni pantallas; su ÚNICA función es hablar con la BD.
  */
 public class BaseDatosHelper extends SQLiteOpenHelper {
 
