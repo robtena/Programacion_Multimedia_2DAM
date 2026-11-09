@@ -1,5 +1,9 @@
 # Sistema de Gestión de Incidencias / Acceso (Android Native)
 
+> [!CAUTION]
+> **ORDEN ABSOLUTA PARA EL AGENTE / IA EN FUTURAS SESIONES:**
+> No debo hacer yo solo el código. Tengo que guiar a Roberto y darle explicaciones o pistas, pero **nunca** hacerle el código completo ni escribírselo todo. De lo contrario, ¡él no aprenderá NADA!
+
 - **Lenguaje:** Java (Nativo)
 - **Entorno / IDE:** Android Studio
 - **Arquitectura:** MVC (Model-View-Controller) básica con SQLite Local.
@@ -8,6 +12,11 @@
 - **Modelo:** Base de datos y manipulación de datos (datos y reglas). En este proyecto se gestiona mediante [`BaseDatosHelper.java`](file:///C:/Users/Usuario/AndroidStudioProjects/Programacion_Multimedia_2DAM/01_Proyecto_1er_Trimestre/IncidenciasApp/app/src/main/java/com/example/incidenciasapp/BaseDatosHelper.java).
 - **Vista:** Frontend de la aplicación (interfaz visual con la que interactúa el usuario).
 - **Controlador:** Lógica de la aplicación, conecta la vista con el modelo, gestiona eventos y decide cuándo transicionar entre actividades.
+
+### 💡 Nota Arquitectónica: Helper Local vs. API en la Nube
+En este proyecto utilizamos una base de datos embebida (SQLite) gestionada mediante `BaseDatosHelper.java`, la cual actúa como una **Capa de Acceso a Datos local**. 
+- En un sistema offline como este, el Helper aísla a las pantallas de los detalles de SQL.
+- Si la base de datos estuviera en la nube (ej. PostgreSQL), esta capa de acceso se gestionaría mediante una **API** que realiza consultas HTTP (peticiones GET/POST) para comunicarse con el servidor remoto.
 
 ---
 

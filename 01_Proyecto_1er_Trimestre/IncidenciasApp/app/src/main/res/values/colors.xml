@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores básicos del sistema -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- PALETA DE COLORES CORPORATIVA (App de Incidencias)      -->
+
+    <!-- Azul corporativo suave y apagado / mate (más elegante y menos estridente) -->
+    <color name="primary_blue">#315485</color>
+
+    <!-- Azul brillante / Celeste para acentos y elementos interactivos -->
+    <color name="accent_teal">#0EA5E9</color>
+
+    <!-- Fondo blanco para que el logotipo con fondo blanco para que no se vea corte con logo "rpt" -->
+    <color name="background_light">#FFFFFFFF</color>
+
+    <!-- Gris oscuro para los textos principales -->
+    <color name="text_dark">#1E293B</color>
 </resources>

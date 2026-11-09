@@ -1,9 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!--
+      ESTILO BASE DE LA APLICACIÓN
+      Hereda de Material 3 ('Theme.Material3.DayNight.NoActionBar') para tener un diseño moderno
+      y eliminar la barra de título superior por defecto.
+    -->
     <style name="Base.Theme.IncidenciasApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!--
+          colorPrimary: Define el color principal de la marca en Material Design.
+          Se aplica automáticamente a botones, barras de progreso, elementos seleccionados y acentos.
+        -->
+        <item name="colorPrimary">@color/primary_blue</item>
+
+        <!--
+          colorSecondary: Color secundario o de acento para complementar al primario
+          en botones flotantes, interruptores o detalles visuales destacados.
+        -->
+        <item name="colorSecondary">@color/accent_teal</item>
+
+        <!--
+          android:windowBackground: Establece el color de fondo por defecto
+          para todas las pantallas (Activities) de la aplicación.
+        -->
+        <item name="android:windowBackground">@color/background_light</item>
+
     </style>
 
+    <!--
+      ESTILO GENERAL DE LA APP
+      Este estilo es el que se declara en el AndroidManifest.xml (`android:theme="@style/Theme.IncidenciasApp"`)
+      y actúa como el puente que aplica la configuración anterior a toda la ejecución.
+    -->
     <style name="Theme.IncidenciasApp" parent="Base.Theme.IncidenciasApp" />
 </resources>

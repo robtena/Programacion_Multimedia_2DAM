@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IncidenciasApp</string>
+    <string name="titulo_gestion_incidencias">Gestor de Incidencias</string>
+    <string name="hint_usuario">Usuario</string>
+    <string name="hint_contrasena">Contraseña</string>
+    <string name="btn_iniciar_sesion">Iniciar Sesión</string>
+    <string name="desc_logo">Logotipo de la app</string>
 </resources>

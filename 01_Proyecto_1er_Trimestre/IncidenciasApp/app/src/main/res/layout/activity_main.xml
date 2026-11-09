@@ -7,13 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- ScrollView para garantizar que la pantalla sea desplazable si aparece el teclado virtual -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <!-- Contenedor lineal vertical que agrupa todos los elementos secuencialmente -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- Logotipo de la App -->
+
+            <!-- Título de la Aplicación -->
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="259dp"
+                android:layout_height="249dp"
+                app:srcCompat="@drawable/logo_rpt" />
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/titulo_gestion_incidencias"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <!-- Campo de texto para el Usuario -->
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:hint="@string/hint_usuario"
+                android:inputType="text"
+                android:minHeight="48dp" />
+
+            <!-- Campo de texto para la Contraseña -->
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/hint_contrasena"
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+
+            <!-- Botón de Iniciar Sesión -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/btn_iniciar_sesion"
+                android:minHeight="48dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

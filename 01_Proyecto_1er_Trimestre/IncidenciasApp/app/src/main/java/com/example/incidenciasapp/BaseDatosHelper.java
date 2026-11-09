@@ -177,4 +177,91 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
         // Devuelve "ADMIN", "EMPLEADO" o null (si los datos eran incorrectos)
         return rolEncontrado;
     }
+
+    // =========================================================================
+    // MÉTODOS CRUD PARA LA GESTIÓN DE INCIDENCIAS (Requisito b del profesor)
+    // =========================================================================
+
+    /*
+     * 1. CREATE (CREAR): Insertar una nueva incidencia en la base de datos.
+     * Recibe los datos introducidos por el usuario y los guarda asociados al ID del creador.
+     */
+    public boolean insertarIncidencia(String titulo, String area, String prioridad, String estado, int creadoPorId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("titulo", titulo);
+        values.put("area", area);
+        values.put("prioridad", prioridad);
+        values.put("estado", estado);
+        values.put("creadoPorId", creadoPorId);
+        values.put("vistaPorAdmin", 0); // 0 por defecto (no vista)
+
+        long resultado = db.insert("incidencias", null, values);
+        db.close();
+
+        // Devuelve true si la inserción fue correcta (resultado != -1)
+        return resultado != -1;
+    }
+
+    /*
+     * 2. READ (CONSULTAR): Obtener todas las incidencias registradas en la base de datos.
+     * Devuelve un Cursor que la Vista (ej: un Adapter) podrá recorrer para mostrarlas en pantalla.
+     */
+    public android.database.Cursor obtenerTodasIncidencias() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        
+        // Consultamos todas las columnas de la tabla incidencias ordenadas por ID descendiente (las más nuevas primero)
+        return db.query(
+                "incidencias",
+                null, // null significa "todas las columnas"
+                null, // sin WHERE (queremos todas)
+                null,
+                null,
+                null,
+                "id DESC" // ordenadas de más reciente a más antigua
+        );
+    }
+
+    /*
+     * 3. UPDATE (MODIFICAR): Actualizar los datos de una incidencia existente por su ID.
+     */
+    public boolean actualizarIncidencia(int id, String titulo, String area, String prioridad, String estado) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("titulo", titulo);
+        values.put("area", area);
+        values.put("prioridad", prioridad);
+        values.put("estado", estado);
+
+        // Actualizamos donde el id coincida
+        int filasAfectadas = db.update(
+                "incidencias",
+                values,
+                "id = ?",
+                new String[]{String.valueOf(id)}
+        );
+
+        db.close();
+        // Devuelve true si se actualizó al menos una fila
+        return filasAfectadas > 0;
+    }
+
+    /*
+     * 4. DELETE (ELIMINAR): Borrar una incidencia de la base de datos utilizando su ID.
+     */
+    public boolean eliminarIncidencia(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int filasAfectadas = db.delete(
+                "incidencias",
+                "id = ?",
+                new String[]{String.valueOf(id)}
+        );
+
+        db.close();
+        // Devuelve true si se borró al menos una fila
+        return filasAfectadas > 0;
+    }
 }
