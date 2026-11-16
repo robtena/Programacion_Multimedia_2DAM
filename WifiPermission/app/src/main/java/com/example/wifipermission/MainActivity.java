@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Según parece yo solo necesito saber que este objeto tiene el metodo .launch("permiso")
     private ActivityResultLauncher<String> requestPermissionLauncher;
 
     @Override
