@@ -64,6 +64,8 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
 
     /*
      * METODO onUpgrade
+     * Es OBLIGATORIO para evitar un error, lo es xq está pensado para actualizaciones futuras
+     * de APP con bases de datos locales.
      * Se ejecuta solo si en el futuro cambias VERSION_BD a un número superior (ej: de 1 a 2).
      */
     @Override
@@ -179,7 +181,7 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
     }
 
     // =========================================================================
-    // MÉTODOS CRUD PARA LA GESTIÓN DE INCIDENCIAS (Requisito b del profesor)
+    // MÉTODOS CRUD PARA LA GESTIÓN DE INCIDENCIAS
     // =========================================================================
 
     /*
