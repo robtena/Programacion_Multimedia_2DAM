@@ -46,15 +46,39 @@ En este proyecto utilizamos una base de datos embebida (SQLite) gestionada media
 
 ---
 
-## 3. Próximo Paso en el Desarrollo
-- Maquetación de la pantalla de inicio de sesión en XML: `activity_main.xml`.
-  - `EditText` para Usuario.
-  - `EditText` para Contraseña (`inputType="textPassword"`).
-  - `Button` de "Iniciar Sesión".
-- Vincular con `MainActivity.java` para conectar con `dbHelper.validarLogin()`.
+## 3. Estado Actual y Próximo Paso en el Desarrollo
+- **Decisión de Alcance (¡Muy Importante!):** Para cumplir con los plazos de entrega de la próxima semana, **no implementaremos un CRUD de usuarios**. Los usuarios (Admin y Empleado) se quedan fijos por código (*seeding* en el login). El **único CRUD completo** de la aplicación será sobre las **Incidencias** (Crear, Consultar, Modificar, Eliminar).
+- **Hitos Completados:**
+  1. Maquetación del Login (`activity_main.xml` con ScrollView y diseño corporativo claro).
+  2. Lógica del Login (`MainActivity.java` validando contra SQLite y pasando rol por `Intent`).
+  3. Estructura de la Base de Datos y Modelo (`BaseDatosHelper.java` con métodos CRUD y `Incidencia.java` POJO).
+  4. Panel Principal (`DashboardActivity.java` y `activity_dashboard.xml` recibiendo rol y listando incidencias en el `ListView` mediante `SimpleCursorAdapter` — Operación **Read / Consultar** completada).
+- **Próximo Hito:** Programar el botón "Crear Nueva Incidencia" para implementar la operación **Create / Crear** del CRUD.
 
 ---
 
 ## 4. Estrategia de Testing y Calidad (QA Automation)
 - **Pruebas Unitarias (JUnit):** Verificación de la lógica del Modelo de forma aislada (`BaseDatosHelper` y validaciones de login).
 - **Pruebas de Interfaz / Integración (Espresso):** Automatización de la interacción con la Vista en emulador (simulación de tecleo, pulsación del botón de login y comprobación de redirección de pantallas).
+
+---
+
+## 5. Glosario Técnico de Exposición (Definiciones Propias de Roberto)
+*Esta sección recopila los conceptos clave explicados con tus propias palabras para la defensa y exposición del proyecto ante el profesor y tus compañeros:*
+
+- **Cursor:** Elemento del framework de Android que funciona como un puntero que contiene datos de la base de datos temporalmente para ir trabajándolos de uno en uno y evitar la saturación o el *crash* de la memoria RAM del dispositivo.
+- **Clase POJO (Modelo `Incidencia`):** Objeto simple de Java que actúa como una "caja" o molde estructural para empaquetar los datos de una fila de la base de datos y transportarlos cómodamente entre el Modelo, el Controlador y la Vista.
+- **Helper Local vs. API en la Nube:** El `BaseDatosHelper` actúa como la capa de acceso a datos local para una base de datos embebida (SQLite). Si la base de datos estuviera en un servidor remoto, se requeriría una API con consultas HTTP.
+- **Arquitectura MVC (Modelo-Vista-Controlador):** Patrón de diseño que divide la app en tres partes: el *Modelo* (la base de datos con el Helper y las clases POJO), la *Vista* (los archivos XML con la interfaz visual que ve el usuario) y el *Controlador* (el código Java de las Activities que conecta la interfaz con los datos y gestiona los eventos).
+
+---
+
+## 6. Requisitos Oficiales del Profesor (Rúbrica de la Asignatura)
+*Lista de comprobación oficial basada en lo exigido por el profesor para la entrega y defensa del proyecto:*
+
+1. **Interfaz Gráfica (a):** Distintas pantallas, navegación entre ellas, controles de entrada, alertas, validación de datos y mensajes comprensibles ante errores.
+2. **Estructura de Clases (b):** Código organizado en clases con separación clara entre pantallas (vistas), modelos de datos (POJOs) y acceso a datos (Helper).
+3. **Persistencia de Datos y CRUD Completo (b):** Almacén local (SQLite) que conserve la información tras cerrar la app. Implementación de un **CRUD completo** (Crear, Consultar, Modificar, Eliminar).
+4. **Permisos (c):** Declaración y solicitud en ejecución de permisos si se necesitan (ej. Cámara), gestionando el caso de denegación por parte del usuario.
+5. **Documentación en PDF (c):** Explicación de la estructura del proyecto, funciones implementadas, capturas de pantalla y manual de uso.
+6. **Entregables Finales:** Proyecto completo de Android Studio, APK instalable (comprimido en ZIP) y documento PDF de documentación.

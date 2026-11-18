@@ -1,5 +1,6 @@
 package com.example.incidenciasapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //    - Admin: username "admin", password "1234"
         //    - Empleado: username "juan", password "1234"
         dbHelper.insertarUsuario("Administrador", "admin", "1234", "ADMIN");
-        dbHelper.insertarUsuario("Empleado Juan", "juan", "1234", "EMPLEADO");
+        dbHelper.insertarUsuario("Empleado Juan", "user", "1234", "EMPLEADO");
 
         // 3. Vinculamos las variables Java con los elementos visuales definidos en el XML (`activity_main.xml`)
         etUsername = findViewById(R.id.etUsername);
@@ -75,14 +76,21 @@ public class MainActivity extends AppCompatActivity {
                     return; // Detenemos la ejecución aquí si hay campos vacíos
                 }
 
-                // 5. Llamamos al Modelo (BaseDatosHelper) para validar el login de forma segura
+                // 5. Llamamos al Modelo (BaseDatosHelper) para validar el login de forma segura.
+                // ¿Qué hace validarLogin por dentro? Consulta la tabla "usuarios" de SQLite 
+                // y devuelve un texto: si el usuario es el admin, devuelve literalmente "ADMIN"; 
+                // si es un empleado (como Juan), devuelve "EMPLEADO". Si no existe, devuelve null.
                 String rol = dbHelper.validarLogin(username, password);
+                // El objeto dbHelper contiene en su interior el "rol" IMPORTANTÍSIMO EN NUESTRA APP.
 
                 if (rol != null) {
                     // Si el rol no es nulo, las credenciales son correctas
                     Toast.makeText(MainActivity.this, "¡Bienvenido! Rol detectado: " + rol, Toast.LENGTH_LONG).show();
-                    
-                    // TODO: Próximamente aquí redirigiremos a la pantalla de gestión de incidencias (Dashboard)
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                    intent.putExtra("EXTRA_ROL", rol); // Adjuntamos el rol detectado clave,valor
+                    // "EXTRA_ROL" es la clave que le damos al objeto intent para recuperarlo en DashboardActivity
+                    startActivity(intent);
+
                 } else {
                     // Si el rol es nulo, usuario o contraseña incorrectos
                     Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
