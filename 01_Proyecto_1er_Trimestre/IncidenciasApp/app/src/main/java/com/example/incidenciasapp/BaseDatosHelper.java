@@ -16,8 +16,11 @@ import android.content.ContentValues;
 public class BaseDatosHelper extends SQLiteOpenHelper {
 
     // CONSTANTES: Nombre del archivo .db y número de versión.
+    // Al subirla a 2, forzamos a Android a ejecutar onUpgrade() para recrear las tablas con _id..
+    /* Y de paso evitamos que la app crashee al detectar una version anterior de BBDD (debido a ejecutar
+    la app una infinidad de veces para ver si compila y funciona correctamante...tela) */
     private static final String NOMBRE_BD = "PapuaIncidencias.db";
-    private static final int VERSION_BD = 1;
+    private static final int VERSION_BD = 2;
 
     /*
      * CONSTRUCTOR
@@ -37,8 +40,17 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // Consulta SQL para crear la tabla de Usuarios (Roles: ADMIN o EMPLEADO)
+        /*
+         * NOTA TÉCNICA IMPORTANTE SOBRE EL NOMBRE DE LA CLAVE PRIMARIA (_id):
+         * Aunque en SQLite puro la clave primaria puede llamarse como queramos ("id"),
+         * en Android, si la consulta devuelve una columna llamada 'id' (sin guion bajo) 
+         * y se pasa directamente a un SimpleCursorAdapter sin renombrarla ni mapearla, 
+         * el adaptador lanza una excepción en tiempo de ejecución:
+         * IllegalArgumentException: column '_id' does not exist, provocando un cierre inesperado.
+         * Por eso la llamamos '_id' desde el principio.
+         */
         String crearTablaUsuarios = "CREATE TABLE usuarios (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " + // ID único auto-incremental
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // ID único auto-incremental
                 "nombre TEXT, " +                          // Nombre real del trabajador
                 "username TEXT UNIQUE, " +                 // Nombre de usuario único para el login
                 "password TEXT, " +                        // Contraseña
@@ -46,7 +58,7 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
 
         // Consulta SQL para crear la tabla de Incidencias (Tickets)
         String crearTablaIncidencias = "CREATE TABLE incidencias (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "titulo TEXT, " +                          // Descripción del fallo
                 "area TEXT, " +                            // Ej: "Barra VIP", "Pista 2"
                 "prioridad TEXT, " +                       // "Alta", "Media", "Baja"
@@ -54,8 +66,8 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
                 "creadoPorId INTEGER, " +                  // ID del empleado que creó la incidencia
                 "asignadoAId INTEGER, " +                  // ID del empleado asignado a resolverla
                 "vistaPorAdmin INTEGER, " +                // 0 = No vista por el Jefe, 1 = Vista
-                "FOREIGN KEY(creadoPorId) REFERENCES usuarios(id), " +
-                "FOREIGN KEY(asignadoAId) REFERENCES usuarios(id))";
+                "FOREIGN KEY(creadoPorId) REFERENCES usuarios(_id), " +
+                "FOREIGN KEY(asignadoAId) REFERENCES usuarios(_id))";
 
         // Ejecutamos las consultas SQL para crear físicamente las tablas en el móvil
         db.execSQL(crearTablaUsuarios);
@@ -111,12 +123,7 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
 
         // Si el resultado no es -1 ("true"), significa que el usuario se guardó correctamente.
         // Si devuelve -1 ("false"), falló (generalmente porque el 'username' ya existe al ser UNIQUE) y devolverá 'false'.
-        return resultado != -1; // Escribir esta línea de código sería lo mismo que escribir esta otra...
-        /*if (resultado != -1) {
-                return true;
-        } else {
-                return false;
-        } */
+        return resultado != -1;
     }
 
     /*
@@ -209,19 +216,19 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
     /*
      * 2. READ (CONSULTAR): Obtener todas las incidencias registradas en la base de datos.
      * Devuelve un Cursor que la Vista (ej: un Adapter) podrá recorrer para mostrarlas en pantalla.
+     * Como la clave primaria ya se llama "_id", SimpleCursorAdapter la reconoce de forma nativa.
      */
     public android.database.Cursor obtenerTodasIncidencias() {
         SQLiteDatabase db = this.getReadableDatabase();
         
-        // Consultamos todas las columnas de la tabla incidencias ordenadas por ID descendiente (las más nuevas primero)
         return db.query(
                 "incidencias",
-                null, // null significa "todas las columnas"
-                null, // sin WHERE (queremos todas)
+                null, 
+                null, 
                 null,
                 null,
                 null,
-                "id DESC" // ordenadas de más reciente a más antigua
+                "_id DESC" 
         );
     }
 
@@ -237,11 +244,11 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
         values.put("prioridad", prioridad);
         values.put("estado", estado);
 
-        // Actualizamos donde el id coincida
+        // Actualizamos donde el _id coincida
         int filasAfectadas = db.update(
                 "incidencias",
                 values,
-                "id = ?",
+                "_id = ?",
                 new String[]{String.valueOf(id)}
         );
 
@@ -258,7 +265,7 @@ public class BaseDatosHelper extends SQLiteOpenHelper {
 
         int filasAfectadas = db.delete(
                 "incidencias",
-                "id = ?",
+                "_id = ?",
                 new String[]{String.valueOf(id)}
         );
 

@@ -1,8 +1,11 @@
 package com.example.incidenciasapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.CursorAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,71 +15,87 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.android.identity.cbor.Simple;
-
+/*
+ * CLASE CONTROLADOR: DashboardActivity
+ * 
+ * Panel principal de la app tras iniciar sesión. Muestra el listado de incidencias (READ)
+ * y permite navegar al formulario de creación de nuevas incidencias (CREATE).
+ */
 public class DashboardActivity extends AppCompatActivity {
 
-    TextView tvWelcome;
+    private TextView tvWelcome;
+    private Button btnNuevaIncidencia;
+    private ListView lvIncidencias;
+    private BaseDatosHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dashboard);
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // 1. Vinculamos el TextView del diseño XML
-                tvWelcome = findViewById(R.id.tvWelcome);
+        // 1. Vinculamos las vistas del XML
+        tvWelcome = findViewById(R.id.tvWelcome);
+        btnNuevaIncidencia = findViewById(R.id.btnNuevaIncidencia);
+        lvIncidencias = findViewById(R.id.lvIncidencias);
 
-        // 2. Recogemos el rol que viajaba en el Intent
-                String rol = getIntent().getStringExtra("EXTRA_ROL");
+        // 2. Inicializamos nuestro Modelo (BaseDatosHelper)
+        dbHelper = new BaseDatosHelper(this);
 
-        // 3. Cambiamos el texto de bienvenida según el rol detectado
-                if ("ADMIN".equals(rol)) {
-                    tvWelcome.setText("Panel de Administrador");
-                } else {
-                    tvWelcome.setText("Panel de Empleado");
-                }
+        // 3. Recogemos el rol que viajaba en el Intent desde MainActivity
+        String rol = getIntent().getStringExtra("EXTRA_ROL");
 
-        // 4. Inicializamos nuestro Modelo (BaseDatosHelper)
-        BaseDatosHelper dbHelper = new BaseDatosHelper(this);
+        // 4. Cambiamos el texto de bienvenida según el rol detectado
+        if ("ADMIN".equals(rol)) {
+            tvWelcome.setText("Panel de Admin");
+        } else {
+            tvWelcome.setText("Panel de Empleado");
+        }
 
+        // 5. Botón Nueva Incidencia: Abre la pantalla de creación (CRUD: CREATE)
+        btnNuevaIncidencia.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, CrearIncidenciaActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // onResume se ejecuta siempre que la pantalla vuelve a primer plano.
+        // Recargamos la lista automáticamente al volver de crear una incidencia.
+        cargarIncidencias();
+    }
+
+    private void cargarIncidencias() {
         // =====================================================================
         // CRUD: [READ / CONSULTAR] -> IMPLEMENTADO (Carga de incidencias en ListView)
-        // CRUD: [CREATE / CREAR]   -> PENDIENTE (Siguiente hito)
+        // CRUD: [CREATE / CREAR]   -> IMPLEMENTADO (Mediante CrearIncidenciaActivity)
         // =====================================================================
-        // 5. Leemos las incidencias de la base de datos
-        // ¿Qué es un CURSOR? Es un objeto que actúa como puntero para recorrer las filas
-        // de la base de datos de una en una, evitando saturar la memoria RAM del dispositivo.
-        android.database.Cursor cursor = dbHelper.obtenerTodasIncidencias();
+        
+        // Obtenemos el Cursor con todas las incidencias de SQLite
+        Cursor cursor = dbHelper.obtenerTodasIncidencias();
 
-        // ¿Qué es un ADAPTER (Adaptador)?
-        // Es el puente o traductor entre los datos en bruto (el Cursor) y la interfaz visual (el ListView).
-        // Coge la información de la base de datos y la "pinta" fila por fila en la lista de la pantalla.
-        String[] desdeColumnas = {"titulo"}; // Columna de la tabla "incidencias" que queremos mostrar...
-        //"Saca el texto de la columna 'titulo' de la base de datos."
-        int[] hastaVistas = {android.R.id.text1}; // Vista predeterminada de Android para mostrar texto en una celda...
-        //"Y mete ese texto dentro de la cajita de texto (TextView) que tiene el ID text1."
+        // Configuramos el adaptador para pintar los títulos en la lista
+        String[] desdeColumnas = {"titulo"};
+        int[] hastaVistas = {android.R.id.text1};
 
-        android.widget.SimpleCursorAdapter adapter = new android.widget.SimpleCursorAdapter(
-                this,                            // 1. Contexto
-                android.R.layout.simple_list_item_1,    // 2. Plantilla visual de la fila
-                cursor,                                 // 3. Origen de los datos (Cursor)
-                desdeColumnas,                          // 4. Qué columnas leer
-                hastaVistas,                            // 5. Dónde pintar los datos
-                0                                       // 6. Flags / Opciones adicionales
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursor,
+                desdeColumnas,
+                hastaVistas,
+                0
         );
 
-        // 6. Vinculamos y asignamos el adaptador al ListView de nuestra vista (activity_dashboard.xml)
-        android.widget.ListView lvIncidencias = findViewById(R.id.lvIncidencias);
-        lvIncidencias.setAdapter(adapter);// El ListView (lvIncidencias) es el que "adopta" al adaptador ya creado
-        // lvIncidencias usa la información que contiene adapter para "pintar" todas las incidencias en la lista
-
-
-
+        // Asignamos el adaptador al ListView
+        lvIncidencias.setAdapter(adapter);
     }
 }

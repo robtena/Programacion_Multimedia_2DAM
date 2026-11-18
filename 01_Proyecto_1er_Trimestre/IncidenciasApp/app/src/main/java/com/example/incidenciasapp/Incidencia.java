@@ -1,7 +1,7 @@
 package com.example.incidenciasapp;
 
 /*
- * CLASE MODELO: Incidencia
+ * CLASE MODELO (POJO): Incidencia
  * 
  * En la arquitectura MVC (Modelo-Vista-Controlador), esta clase representa un 
  * "Objeto de Dominio" o POJO (Plain Old Java Object), Un POJO es simplemente una clase que solo sirve

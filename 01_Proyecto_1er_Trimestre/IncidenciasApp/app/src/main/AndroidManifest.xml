@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  EL MANIFEST (AndroidManifest.xml):
+  Es el "documento de identidad" y mapa de navegación obligatorio de toda app en Android.
+  Le dice al sistema operativo qué actividades existen, cuáles son sus permisos y cuál se abre primero.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- REQUISITO C (Permisos): Declaramos que nuestra app necesita usar la cámara del dispositivo -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Declaración de visibilidad de paquete (Obligatorio en Android 11+ para abrir la app de cámara) -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <!-- CONFIGURACIÓN GENERAL DE LA APLICACIÓN -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,20 +29,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IncidenciasApp">
+
+        <!-- PANTALLA 1: MainActivity (Login) -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- PANTALLA 2: DashboardActivity (Panel Principal) -->
         <activity
             android:name=".DashboardActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- PANTALLA 3: CrearIncidenciaActivity (Formulario de Creación) -->
+        <activity
+            android:name=".CrearIncidenciaActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

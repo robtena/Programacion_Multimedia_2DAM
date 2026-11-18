@@ -7,4 +7,11 @@
     <string name="desc_logo">Logotipo de la app</string>
     <string name="panel_incidencias">Panel de Incidencias</string>
     <string name="btn_crear_incidencia">Crear Nueva Incidencia</string>
+    <string name="titulo_crear_incidencia">Crear Nueva Incidencia</string>
+    <string name="hint_titulo">Título del problema</string>
+    <string name="hint_area">Área o ubicación (ej. Barra VIP)</string>
+    <string name="hint_prioridad">Prioridad (Alta, Media, Baja)</string>
+    <string name="btn_hacer_foto">Hacer Foto (Cámara)</string>
+    <string name="btn_guardar">Guardar Incidencia</string>
+    <string name="btn_volver">Volver</string>
 </resources>
