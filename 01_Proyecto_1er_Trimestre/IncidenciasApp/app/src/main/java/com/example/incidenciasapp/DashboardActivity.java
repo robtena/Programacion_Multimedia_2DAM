@@ -45,7 +45,11 @@ public class DashboardActivity extends AppCompatActivity {
         // 4. Inicializamos nuestro Modelo (BaseDatosHelper)
         BaseDatosHelper dbHelper = new BaseDatosHelper(this);
 
-        // 5. Leemos las incidencias de la base de datos (Operación READ del CRUD)
+        // =====================================================================
+        // CRUD: [READ / CONSULTAR] -> IMPLEMENTADO (Carga de incidencias en ListView)
+        // CRUD: [CREATE / CREAR]   -> PENDIENTE (Siguiente hito)
+        // =====================================================================
+        // 5. Leemos las incidencias de la base de datos
         // ¿Qué es un CURSOR? Es un objeto que actúa como puntero para recorrer las filas
         // de la base de datos de una en una, evitando saturar la memoria RAM del dispositivo.
         android.database.Cursor cursor = dbHelper.obtenerTodasIncidencias();
